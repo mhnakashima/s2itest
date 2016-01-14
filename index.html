@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html ng-app="workerTasker">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width">
+	<title>S2IT - Frontend - Test</title>
+
+	
+	<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://material.angularjs.org/latest/angular-material.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+	<link rel="stylesheet" href="css/shorts.min.css" />
+	<link rel="stylesheet" href="css/style.css" />
+
+</head>
+<body>
+	
+	<header id="topo" class="topo">
+		<div class="logoContainer container height70px">
+			<div id="logo" class="vAlignMiddle marginTop15px marginBottom15px"></div>
+		</div>
+	</header>
+	
+	<div id="databaseContainer" class="container" ng-controller="WorkTaskerCtrl">
+		
+		<form action="#" novalidate class="width100percent">
+			
+			<div class="toolbar clearfix marginTop30px marginBottom15px">
+				
+				<input id="searchText" type="text" ng-model="searchText " placeholder="Search..." class="form-control" />				
+
+				<button type="button" class="btn btn-primary floatRight" ng-click="open()">ADD</button>
+			</div>
+			
+
+			<table id="database" class="width100percent alignCenter table table-striped">
+				<thead>
+					<tr>
+						<th>Done? </th>
+						<th>Name  </th>
+						<th>Description</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				
+				<tbody>
+					<tr ng-repeat="value in filtered = (works | filter:searchText) ">
+						<td><input type="checkbox" ng-model="value.done"></td>
+						<td>{{value.name}}</td>
+						<td>{{value.description}}</td>
+						<td >
+							<a href="" ng-click="$event.preventDefault(); open($index)"><i class="fa fa-pencil"></i></a>
+							<a href="" ng-click="$event.preventDefault(); deletePost($event, works, $index)"><i class="fa fa-trash"></i></a>
+						</td>
+					</tr>
+					<tr ng-show="filtered.length == 0">
+						<td colspan="4" class="alignCenter">No results.</td>
+					</tr>
+				</tbody>
+
+				<tfoot ng-hide="filtered.length == 0">
+					<tr>
+						<td colspan="3"></td>
+						<td colspan="1" class="fontBold alignCenter paddingRight20px">Total {{filtered.length}} itens</td>
+					</tr>
+				</tfoot>
+
+			</table>
+		</form>
+
+	</div>
+
+	<footer id="rodape" class="rodape ">
+		<div class="container">
+			<ul class="">
+				<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+				<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+				<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+				<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+			</ul>
+		</div>
+	</footer>
+
+ 	<!-- Angular Material Dependencies -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.js"></script>
+
+    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.6.0.js"></script>
+
+	<script src="js/workTasker.js"></script>
+	<script src="js/WorkTaskController.js"></script>
+	<script src="js/ModalTaskController.js"></script>
+	<script src="js/DeleteTaskController.js"></script>
+
+</body>
+</html>

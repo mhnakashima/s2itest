@@ -1,0 +1,22 @@
+<div class="md-dialog">
+  	<div class="modal-header">
+        <h3 class="modal-title" ng-model="title">{{title}}</h3>
+    </div>
+
+    <div class="modal-body">
+    	<div class="form-horizontal">
+    		<form action="#" novalidate>
+    			<input type="text" class="form-control" placeholder="Name" ng-model="work.name" />
+    			<input type="text" class="form-control " placeholder="Description" ng-model="work.description"  />    		
+
+       	</form>	
+
+      </div>
+    </div>
+
+    <div class="modal-footer">
+          <button class="btn btn-default" ng-click="submitForm()">{{title}}</button>
+          <button class="btn btn-default" ng-click="cancelForm()">Cancel</button>
+      </div>
+    </div>
+</div>
